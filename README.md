@@ -1,459 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--
- * This Source Code Form is subject to the terms of the Mozilla Public License,
- * v. 2.0. If a copy of the MPL was not distributed with this file, You can
- * obtain one at http://mozilla.org/MPL/2.0/
- *
- * Copyright (C) 2005-2014, Peter Johnson (www.delphidabbler.com).
- *
- * Read me file for About Box Component.
--->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+# About Box Component
 
-<head>
+## Contents
 
-  <title>
-    DelphiDabbler About Box Component ReadMe
-  </title>
+* [Description](#description)
+* [Installation](#installation)
+* [Demo Project](#demo-project)
+* [Update History](#update-history)
+* [License](#license)
+* [Bugs and Feature Requests](#bugs-and-feature-requests)
+* [About the Author](#about-the-author)
 
-  <style type="text/css">
-    body {
-      margin: 1em;
-      padding: 0;
-      font-family: Verdana, Arial, sans-serif;
-      font-size: 9pt;
-      line-height: 150%;
-    }
-    h1 {
-      margin: 0 0 1em 0;
-      padding: 0.5em;
-      border: 1px silver solid;
-      background-color: #eee;
-      font-size: 13pt;
-      font-weight: bold;
-      text-align: center;
-    }
-    h1 .subtitle {
-      font-style: italic;
-      color: #336;
-    }
-    h2 {
-      margin: 1em 0 0 0;
-      padding: 0;
-      padding-bottom: 6px;
-      border-bottom: 1px silver solid;
-      font-size: 11pt;
-      font-weight: bold;
-    }
-    h3 {
-      margin: 0.5em 0 0 0;
-      padding: 0;
-      font-size: 9pt;
-      font-weight: bold;
-    }
-    p {
-      margin: 0.5em 0 0 0;
-      padding: 0;
-    }
-    ul, ol {
-      margin: 0.5em 0 0 3em;
-      padding: 0;
-    }
-    ul {
-      list-style-type: square;
-    }
-    ul.spaced li,
-    ol.spaced li {
-      margin-top: 0.5em;
-    }
-    ul.spaced li,
-    ol.spaced li {
-      margin-top: 0.5em;
-    }
-    ul.unspaced li,
-    ol.unspaced li {
-      margin-top: 0;
-    }
-    ul.unspaced li.first,
-    ol.unspaced li.first {
-      margin-top: 0.5em;
-    }
-    code {
-      font-family: "Courier New", Courier, monospace;
-    }
-    a:link {
-      color: #336;
-      text-decoration: underline;
-    }
-    a:visited {
-      color: #669;
-      text-decoration: underline;
-    }
-    a:active {
-      color: #336;
-      text-decoration: underline;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .gototop {
-      margin: 1em 0 0 0;
-      padding: 0.3em 0 0 0;
-      text-align: center;
-      position: relative;
-      float: right;
-      font-weight: bold;
-    }
-    .pullout {
-      border-left: 8px silver solid;
-      background-color: #eee;
-      margin: 0.5em 0 0 0;
-      padding: 0.25em 0.5em;
-      font-style: italic;
-    }
-    .indent {
-      margin-left: 3em;
-    }
-    .highlight {
-      color: #336;
-      font-style: italic;
-      font-weight: bold;
-    }
-    .endnotes {
-      margin: 1.5em 0 0 0;
-      padding: 1em 0 0 0;
-      border-top: 1px silver solid;
-    }
-    .comments {
-      font-style: italic;
-    }
-    .copyright,
-    .copyright a:link,
-    .copyright a:visited,
-    .copyright a:active {
-      margin: 1em 0 0 0;
-      color: gray;
-      font-size: 8pt;
-      text-align: right;
-    }
-  </style>
+## Description
 
-</head>
+This non-visual component encapsulates an About Box.
 
-<body>
+The component has string properties to display five different pieces of information in the about box. These properties are:
 
-<h1>
-  About Box Component<br />
-  <span class="subtitle">ReadMe</span>
-</h1>
+* _Title_ – The text that appears in the window title. The default value is 'About'.
+* _ProgramName_ – The name of the program. This is the title of the application. The default value is the same as the _TApplication.Title_ property.
+* _Version_ – The version number of the program. The default value is an empty string.
+* _Copyright_ – A copyright message. The default value is an empty string.
+* _Notes_ – Up to three lines of notes. The default value is an empty string.
 
-<h2 id="contents">Contents</h2>
+Alternatively, the about box can display information from a _VERSIONINFO_ resource included in the program. This is accessed via a linked _TPJVersionInfo_ component. The values of the _ProgramName_, _Version_, _Copyright_ and _Notes_ properties are ignored and relevant strings from the program's version information is used in their stead.
 
-<ul>
-  <li><a href="#description">Description</a></li>
-  <li><a href="#installation">Installation</a></li>
-  <li><a href="#demo">Demo Project</a></li>
-  <li><a href="#update">Update History</a></li>
-  <li><a href="#license">License</a></li>
-  <li><a href="#bugs">Bugs and Feature Requests</a></li>
-  <li><a href="#author">About the Author</a></li>
-</ul>
+The dialogue box's position can be specified relative to the screen, desktop or parent application. Their is a single close button whose appearance and position is customised. The About box also displays the program's icon. The font used to display dialogue box text can be customised.
 
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
+### Required component
 
-<h2 id="description">
-  Description
-</h2>
+_TPJAboutBoxDlg_ requires that a DelphiDabbler [_Version Information Component_](https://delphidabbler.com/software/verinfo) is installed first in order to compile.
 
-<p>
-  This non-visual component encapsulates an About Box.
-</p>
+### Compatibility
 
-<p>
-  The component has string properties to display five different pieces of
-  information in  the about box. These properties are:
-</p>
+_TPJAboutBoxDlg_ is believed to compile on all Win32 versions of Delphi. Earlier versions were tested with Delphi 2, 3, 4, 6 and 7 but, although every effort has been made to retain backward compatibility, this has not been tested for v3.6 and later. The latest version has been tested with Delphi 7, 2007, 2009, 2010, XE, and XE2 to XE4. **Note:** Delphi 1 support was dropped at v3.5.
 
-<ul>
-  <li>
-    <var>Title</var> &ndash; Contents appear in the window title. The default
-    value is 'About'.
-  </li>
-  <li>
-    <var>ProgramName</var> &ndash; The name of the program. This is the title of
-    the application. The default value is the same as <var>TApplications</var>'s
-    <var>Title</var> property.
-  </li>
-  <li>
-    <var>Version</var> &ndash; This version number of the program. Optional
-    property &ndash; default is nothing.
-  </li>
-  <li>
-    <var>Copyright</var> &ndash; A copyright message. Optional property &ndash;
-    default is nothing.
-  </li>
-  <li>
-    <var>Notes</var> &ndash; Up to three lines of notes. Optional property
-    &ndash; default is nothing.
-  </li>
-</ul>
+This component is Windows 64 bit compatible and can be compiled into a 64 bit VCL package.
 
-<p>
-  Alternatively, the about box can display information from a VERSIONINFO
-  resource included in the program. This is accessed via a linked
-  <var>TPJVersionInfo</var> component. The values of the <var>ProgramName</var>,
-  <var>Version</var>, <var>Copyright</var> and <var>Notes</var> properties are
-  ignored and relevant strings from the program's version information is used in
-  their stead.
-</p>
+> **NOTE:** The unit name changed to `PJAbout` at release 3. Programs using earlier releases will need to be modified (or to have an alias set in Delphi's Project Options) before being recompiled using the new version.
 
-<p>
-  The dialogue's position can be specified relative to the screen, desktop or
-  parent application. The dialogue has a single close button whose appearance
-  and position is customised. The About box also displays the program's icon.
-  The font used to display dialogue box text can be customised.
-</p>
+## Installation
 
-<h3>
-  Required component
-</h3>
+> **Important Note:** Please ensure that you have installed the [_TPJVersionInfo_](https://delphidabbler.com/software/verinfo) component **before** installing the about box component. If you are using Delphi XE4 or earlier, v3.0.0 of _TPJVersionInfo_ or later is required or later. Users of Delphi XE5 or later require _TPJVersionInfo_ v3.3.2 or later.
 
-<p>
-  <var>TPJAboutBoxDlg</var> requires that a DelphiDabbler <a
-    href="http://www.delphidabbler.com/software/verinfo"
-  >Version Information Component</a> is installed in order to compile.
-</p>
+_TPJAboutBoxDlg_ and its demo program are supplied in a zip file. Before installing you need to extract all the files from the zip file, preserving the directory structure. The following files will be extracted:
 
-<h3>
-  Compatibility
-</h3>
+* **`PJAbout.pas`** – Component source code.
+* **`PJAbout.dfm`** – Form file containing the about box.
+* **`PJAbout.dcr`** – Component palette glyph.
+* `ReadMe.md` – This read-me file.
+* `ChangeLog.txt` – Change log.
+* `MPL-2.txt` – Mozilla Public License v2.0.
+* `Documentation.URL` – Short-cut to the component's online documentation.
 
-<p>
-  <var>TPJAboutBoxDlg</var> is believed to compile on all Win32 versions of
-  Delphi. Earlier versions were tested with Delphi 2, 3, 4, 6 and 7 but,
-  although every effort has been made to retain backward compatibility, this has
-  not been tested for v3.6 and later. The latest version has been tested with
-  Delphi 7, 2007, 2009, 2010, XE, and XE2 to XE4. <strong>Note:</strong> Delphi
-  1 support was dropped at v3.5.
-</p>
+In addition to the above files you will find the source code of a [demo project](#demo-project) in the `Demo` sub-directory.
 
-<p>
-  This component is Windows 64 bit compatible and can be compiled into a 64 bit
-  VCL package.
-</p>
+You can now install the component into the Delphi IDE. The files `PJAbout.pas`, `PJAbout.dfm` and `PJAbout.dcr` are required to do this (`PJAbout.dcr` is not required for 64 bit packages). For Delphi 3 onwards you must include these files in a design time package that is installed into the Delphi IDE. If you need help doing this [see here](https://delphidabbler.com/url/install-comp).
 
-<p>
-  The unit name changed to <code>PJAbout</code> at release 3. Programs using
-  earlier releases will need to be modified (or to have an alias set in Delphi's
-  Project Options) before being recompiled using the new version.
-</p>
+## Demo Project
 
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
+A demo program is included in the download that can be used to exercise the component. This program should be able to be compiled with any version of Delphi supported by the component, but this has only been tested in Delphi 7 or later.
 
-<h2 id="installation">
-  Installation
-</h2>
+See the read-me file included in the `Demo` directory for further details.
 
-<div class="pullout">
-  <div class="content">
-    <strong>Important Note:</strong> If you use any Delphi compiler up to XE4,
-    please ensure that you have installed the
-    <var><a
-      href="http://www.delphidabbler.com/software?id=verinfo"
-    >TPJVersionInfo</a></var> component v3.0 or later (v3.3.2 or later
-    preferred) <strong>before</strong> installing the about box component.
-  </div>
-  <div class="content">
-    If you are using Delphi XE5 or later you need <var><a
-      href="http://www.delphidabbler.com/software?id=verinfo"
-    >TPJVersionInfo</a></var> v3.3.2 as a minimum, otherwise the code will not
-    compile.
-  </div>
-</div>
+## Update History
 
-<p>
-  <var>TPJAboutBoxDlg</var>, its help files and demo program are supplied in a
-  zip file. Before installing you need to extract all the files from the zip
-  file, preserving the directory structure. The following files will be
-  extracted:
-</p>
+A complete change log is provided in a text file that is included in the download.
 
-<ul>
-  <li class="first">
-    <strong><code>PJAbout.pas</code></strong> &ndash; Component source code.
-  </li>
-  <li>
-    <strong><code>PJAbout.dfm</code></strong> &ndash; Form file containing the
-    about box.
-  </li>
-  <li>
-    <strong><code>PJAbout.dcr</code></strong> &ndash; Component palette glyph.
-  </li>
-  <li>
-    <code>PJAbout.hlp</code> &ndash; Help file that integrates with the Delphi
-    3-7 IDE.
-  </li>
-  <li>
-    <code>PJAbout.als</code> &ndash; Keyword file required when integrating the
-    help file with Delphi 6 and 7.
-  </li>
-  <li>
-    <code>ReadMe.htm</code> &ndash; This read-me file.
-  </li>
-  <li>
-    <code>ChangeLog.txt</code> &ndash; Change log.
-  </li>
-  <li>
-    <code>MPL-2.txt</code> &ndash; Mozilla Public License v2.0.
-  </li>
-  <li>
-    <code>Documentation.URL</code> &ndash; Short-cut to the component's online
-    documentation
-  </li>
-</ul>
+## License
 
-<p>
-  In addition to the above files you will find the the source code of a <a
-    href="#demo"
-  >demo project</a> in the <code>Demo</code> sub-directory.
-</p>
+The _About Box Component_ (`PJAbout.pas`) is released under the terms of the [Mozilla Public License v2.0](https://www.mozilla.org/MPL/2.0/).
 
-<p>
-  You can now install the component into the Delphi IDE. The files
-  <code>PJAbout.pas</code>, <code>PJAbout.dfm</code> and
-  <code>PJAbout.dcr</code> are required to do this (<code>PJAbout.dcr</code> is
-  not required for 64 bit packages). For Delphi 3 onwards you must include these
-  files in a design time package that is installed into the Delphi IDE. If you
-  need help doing this <a
-    href="http://www.delphidabbler.com/url/install-comp"
-  >see here</a>.
-</p>
+All relevant trademarks are acknowledged.
 
-<p>
-  Note that the help file included in the download can only integrate with the
-  IDE in Delphi 3-7. For information on how to do this, see <a
-    href="http://www.delphidabbler.com/articles?article=15"
-  >this article</a>. Users of other versions of Delphi can either use the help
-  file as a stand-alone file (in which case some links won't work) or you can
-  use the <a
-    href="http://www.delphidabbler.com/url/aboutbox-docs"
-  >online documentation</a>.
-</p>
+## Bugs and Feature Requests
 
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
+Bugs can be reported or new features requested via the [Issue Tracker](https://github.com/ddablib/aboutbox/issues). A GitHub account is required.
 
-<h2 id="demo">
-  Demo Project
-</h2>
+## About the Author
 
-<p>
-  A demo program is included in the download that can be used to exercise the
-  component. This program should be able to be compiled with any version of
-  Delphi supported by the component, but this has only been tested in Delphi 7
-  or later.
-</p>
+I'm Peter Johnson – a hobbyist programmer living in Ceredigion in West Wales, UK, writing write mainly in Delphi. My programs and other library code are available from: [https://delphidabbler.com/](https://delphidabbler.com/).
 
-<p>
-  See the read-me file included in the <code>Demo</code> directory for further
-  details.
-</p>
-
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
-
-<h2 id="update">
-  Update History
-</h2>
-
-<p>
-   A complete change log is provided in a text file that is included in the
-   download.
-</p>
-
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
-
-<h2 id="license">
-  License
-</h2>
-
-<p>
-  The <em>About Box Component</em> (<code>PJAbout.pas</code>) is released under
-  the terms of the <a
-    href="http://www.mozilla.org/MPL/2.0/"
-  >Mozilla Public License v2.0</a>.
-</p>
-
-<p>
-  All relevant trademarks are acknowledged.
-</p>
-
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
-
-<h2 id="bugs">
-  Bugs and Feature Requests
-</h2>
-
-<p>
-  Bugs can be reported or new features requested via the <a
-    href="http://www.delphidabbler.com/url/ddlib-issues"
-  >Issue Tracker</a>.
-</p>
-
-<p>
-  If no similar report or request has been recorded already, use the <em>New
-  Issue</em> link to add a new issue. Please select the most appropriate
-  template from the <em>Templates</em> drop down list and add the
-  <code>Project-aboutbox</code> label.
-</p>
-
-<p class="gototop">
-  &raquo; <a href="#contents">Contents</a>
-</p>
-
-<h2 id="author">
-  About the Author
-</h2>
-
-<p>
-  I'm Peter Johnson &ndash; a hobbyist programmer living in Ceredigion in West
-  Wales, UK, writing write mainly in Delphi. My programs and code are available
-  from: <a
-    href="http://www.delphidabbler.com/"
-  >http://www.delphidabbler.com/</a>.
-</p>
-
-<p>
-  I can be <a
-    href="http://www.delphidabbler.com/contact"
-  >contacted via the website.</a>
-</p>
-
-<div class="endnotes">
-  <div class="comments">
-    Please <a
-      href="http://www.delphidabbler.com/contact"
-    >let me know</a> if you have any comments about the component, but please
-    use the Issue Tracker noted above to report bugs and request new features.
-  </div>
-  <div class="copyright">
-    This document is copyright &copy; 2005-2014, P D Johnson, <a
-      href="http://www.delphidabbler.com/"
-    >www.delphidabbler.com</a>.
-  </div>
-</div>
-
-</body>
-
-</html>
+> This document is copyright © 2005-2022, [P D Johnson](https://gravatar.com/delphidabbler).
