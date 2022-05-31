@@ -16,15 +16,15 @@ This non-visual component encapsulates an About Box.
 
 The component has string properties to display five different pieces of information in the about box. These properties are:
 
-* _Title_ – The text that appears in the window title. The default value is 'About'.
+* _Title_ – The text that appears in the window title. The default value is `'About'`.
 * _ProgramName_ – The name of the program. This is the title of the application. The default value is the same as the _TApplication.Title_ property.
 * _Version_ – The version number of the program. The default value is an empty string.
 * _Copyright_ – A copyright message. The default value is an empty string.
 * _Notes_ – Up to three lines of notes. The default value is an empty string.
 
-Alternatively, the about box can display information from a _VERSIONINFO_ resource included in the program. This is accessed via a linked _TPJVersionInfo_ component. The values of the _ProgramName_, _Version_, _Copyright_ and _Notes_ properties are ignored and relevant strings from the program's version information is used in their stead.
+Alternatively, the about box can display information from a _VERSIONINFO_ resource included in the program. This is accessed via a linked _TPJVersionInfo_ component. The values of the _ProgramName_, _Version_, _Copyright_ and _Notes_ properties are ignored and relevant strings from the program's version information are used in their stead.
 
-The dialogue box's position can be specified relative to the screen, desktop or parent application. Their is a single close button whose appearance and position is customised. The About box also displays the program's icon. The font used to display dialogue box text can be customised.
+The dialogue box's position can be specified relative to the screen, desktop or parent application. There is a single close button whose appearance and position customisable. The About box also displays the program's icon. The font used by the dialogue box can be customised.
 
 ### Required component
 
@@ -32,7 +32,7 @@ _TPJAboutBoxDlg_ requires that a DelphiDabbler [_Version Information Component_]
 
 ### Compatibility
 
-_TPJAboutBoxDlg_ is believed to compile on all Win32 versions of Delphi. Earlier versions were tested with Delphi 2, 3, 4, 6 and 7 but, although every effort has been made to retain backward compatibility, this has not been tested for v3.6 and later. The latest version has been tested with Delphi 7, 2007, 2009, 2010, XE, and XE2 to XE4. **Note:** Delphi 1 support was dropped at v3.5.
+_TPJAboutBoxDlg_ is believed to compile on all Win32 versions of Delphi. Earlier versions were tested with all Delphis from v2. Every effort has been made to retain backward compatibility, but this has not been tested for v3.6 and later. The latest version has been tested with Delphi 7, 2007, 2009, 2010, XE, and XE2 to XE4. **Note:** Delphi 1 support was dropped at v3.5.
 
 This component is Windows 64 bit compatible and can be compiled into a 64 bit VCL package.
 
@@ -47,8 +47,8 @@ _TPJAboutBoxDlg_ and its demo program are supplied in a zip file. Before install
 * **`PJAbout.pas`** – Component source code.
 * **`PJAbout.dfm`** – Form file containing the about box.
 * **`PJAbout.dcr`** – Component palette glyph.
-* `ReadMe.md` – This read-me file.
-* `ChangeLog.txt` – Change log.
+* `README.md` – This read-me file.
+* `CHANGELOG.md` – Change log.
 * `MPL-2.txt` – Mozilla Public License v2.0.
 * `Documentation.URL` – Short-cut to the component's online documentation.
 
@@ -64,7 +64,7 @@ See the read-me file included in the `Demo` directory for further details.
 
 ## Update History
 
-A complete change log is provided in a text file that is included in the download.
+A complete change log is provided in `CHANGELOG.md` that is included in the download.
 
 ## License
 
