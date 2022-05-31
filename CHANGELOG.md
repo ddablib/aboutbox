@@ -27,7 +27,7 @@
 
 ## v3.5.1 of 25 Mar 2011
 
-+ Fixed bug (issue #13) where making some application wide changes to how forms are handled in later Delphis could cause the dialogue box to always be positioned at the top left of the screen.
++ Fixed bug ~~(issue #13)~~ where making some application wide changes to how forms are handled in later Delphis could cause the dialogue box to always be positioned at the top left of the screen.
 
 ## v3.5 of 27 December 2009
 
@@ -35,7 +35,7 @@
 + Changed default values of AutoDetectGlyphs and ButtonGlyphs properties.
 + Simplified and rationalised setting and use of conditional define symbols and removed unused conditional define symbols from demo.
 + Changed to use resourcestrings on Delphi 3 and later for default dialogue title and button captions.
-+ Fixed bug (issue #2) that was hanging Delphi 2010 IDE.
++ Fixed bug ~~(issue #2)~~ that was hanging Delphi 2010 IDE.
 + Deleted AutoDetectGlyphs test from demo project.
 + Updated documentation and included short-cut file that links to component Wiki.
 + De-licensed demo by removing MPL from it.
